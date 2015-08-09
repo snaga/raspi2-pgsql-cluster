@@ -9,4 +9,4 @@ chmod 644 /etc/hostname
 cp -v interfaces.pi3 /etc/network/interfaces
 chmod 644 /etc/network/interfaces
 
-
+sh ssh.sh
