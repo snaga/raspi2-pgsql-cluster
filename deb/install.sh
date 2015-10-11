@@ -1,1 +1,1 @@
-sudo dpkg -i *.deb
+sudo dpkg -i --skip-same-version *.deb

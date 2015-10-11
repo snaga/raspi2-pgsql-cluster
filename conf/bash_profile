@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PGHOME=/usr/pgsql-9.4
+export PGHOME
+
+PATH=$PATH:$PGHOME/bin:/opt/uptime/postgres-toolkit-0.2.2/bin
+export PATH
+
+EDITOR=vi
+export EDITOR
+
+source .bashrc
+
