@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 VERSION=9.4.5
 MAJOR=`echo $VERSION | perl -e 's/^(\d+\.\d+)\..*/\1/' -p`
@@ -21,6 +21,10 @@ sudo make install
 cd contrib
 make -j 4
 sudo make install
+
+cd add-ons
+bash build.sh
+cd ..
 
 tar zcvf pgsql-$MAJOR.tar.gz /usr/pgsql-$MAJOR
 
