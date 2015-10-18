@@ -90,5 +90,6 @@ host    all             all             ::1/128                 trust
 # Allow replication connections from localhost, by a user with the
 # replication privilege.
 #local   replication     pi                                trust
-host    replication     pi              192.168.100.0/24        trust
+host    replication     pi        192.168.100.0/24         trust
+#host    replication     pi        127.0.0.1/32            trust
 #host    replication     pi        ::1/128                 trust

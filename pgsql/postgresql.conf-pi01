@@ -83,7 +83,7 @@ max_connections = 100			# (change requires restart)
 					# (change requires restart)
 #ssl_prefer_server_ciphers = on		# (change requires restart)
 #ssl_ecdh_curve = 'prime256v1'		# (change requires restart)
-#ssl_renegotiation_limit = 512MB	# amount of data between renegotiations
+#ssl_renegotiation_limit = 0		# amount of data between renegotiations
 #ssl_cert_file = 'server.crt'		# (change requires restart)
 #ssl_key_file = 'server.key'		# (change requires restart)
 #ssl_ca_file = ''			# (change requires restart)
@@ -144,7 +144,7 @@ dynamic_shared_memory_type = posix	# the default is the first option
 
 #max_files_per_process = 1000		# min 25
 					# (change requires restart)
-shared_preload_libraries = 'pg_stat_statements'		# (change requires restart)
+shared_preload_libraries = 'sql_firewall,pgaudit'		# (change requires restart)
 
 # - Cost-Based Vacuum Delay -
 
@@ -318,7 +318,7 @@ hot_standby = on			# "on" allows queries during recovery
 					# requires logging_collector to be on.
 
 # This is used when logging to stderr:
-logging_collector = on			# Enable capturing of stderr and csvlog
+logging_collector = on		# Enable capturing of stderr and csvlog
 					# into log files. Required to be on for
 					# csvlogs.
 					# (change requires restart)
@@ -328,7 +328,7 @@ logging_collector = on			# Enable capturing of stderr and csvlog
 					# can be absolute or relative to PGDATA
 log_filename = 'postgresql-%d.log'	# log file name pattern,
 					# can include strftime() escapes
-#log_file_mode = 0600			# creation mode for log files,
+log_file_mode = 0644		# creation mode for log files,
 					# begin with 0 to use octal notation
 #log_truncate_on_rotation = off		# If on, an existing log file with the
 					# same name as the new log file will be
@@ -410,7 +410,7 @@ log_disconnections = on
 #log_duration = off
 #log_error_verbosity = default		# terse, default, or verbose messages
 #log_hostname = off
-log_line_prefix = '[%t] %p: %u@%d: '	# special values:
+log_line_prefix = '[%t] %h %p: %u/%d: '			# special values:
 					#   %a = application name
 					#   %u = user name
 					#   %d = database name
@@ -517,6 +517,7 @@ log_timezone = 'Japan'
 #bytea_output = 'hex'			# hex, escape
 #xmlbinary = 'base64'
 #xmloption = 'content'
+#gin_fuzzy_search_limit = 0
 
 # - Locale and Formatting -
 
@@ -612,3 +613,6 @@ default_text_search_config = 'pg_catalog.english'
 #------------------------------------------------------------------------------
 
 # Add settings for extensions here
+
+pgaudit.log = 'read, write, privilege, user, definition, config, admin, function'
+
